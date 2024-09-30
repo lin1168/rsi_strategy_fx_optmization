@@ -16,7 +16,7 @@ plots_dir = os.path.join(results_dir, 'plots')
 os.makedirs(plots_dir, exist_ok=True)
 
 
-def load_and_prepare_data(file_path, rsi_length=7, oversold=20, overbought=90):
+def load_and_prepare_data(file_path, rsi_length=2, oversold=20, overbought=90):
     """
     Load CSV data, preprocess it, and calculate RSI.
 
