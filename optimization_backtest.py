@@ -7,7 +7,6 @@ import pandas as pd
 import pandas_ta as ta
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
 from matplotlib.backends.backend_pdf import PdfPages
 import shutil
 
@@ -37,6 +36,7 @@ param_grid = {
     'stop_loss_percent': [0.01, 0.02, 0.03],
     'take_profit_percent': [0.05, 0.1, 0.15]
 }
+
 
 def load_and_prepare_data(file_path, rsi_length, oversold, overbought):
     """Load data, preprocess, and calculate RSI within a specified date range."""
@@ -81,108 +81,6 @@ def split_data(df):
     print(f"Testing data size: {len(test_data)}")
     return train_data, test_data
 
-
-# def backtest_strategy(
-#     df,
-#     risk_percent,
-#     stop_loss_percent,
-#     take_profit_percent,
-#     initial_cash=100_000
-# ):
-#     """Backtest RSI strategy and return performance metrics."""
-#     cash = initial_cash
-#     units = 0
-#     equity = initial_cash
-#     equity_curve = []
-#     total_trades = 0
-#     time_in_market_hours = 0
-#     started = False
-#     purchase_price = 0
-
-#     buy_signals = df[df['Signal'] == 'Buy'].index
-#     sell_signals = df[df['Signal'] == 'Sell'].index
-
-#     for i, row in df.iterrows():
-#         try:
-#             if not started and i in buy_signals:
-#                 position_risk = equity * risk_percent
-#                 stop_loss = row['Adj Close'] * (1 - stop_loss_percent)
-#                 risk_per_unit = row['Adj Close'] - stop_loss
-#                 units_to_buy = int(position_risk // risk_per_unit) if risk_per_unit > 0 else 0
-
-#                 if units_to_buy > 0 and cash >= units_to_buy * row['Adj Close']:
-#                     units += units_to_buy
-#                     cash -= units_to_buy * row['Adj Close']
-#                     cash -= units_to_buy * row['Adj Close'] * 0.0002
-#                     total_trades += 1
-#                     purchase_price = row['Adj Close']
-#                     started = True
-
-#             elif started:
-#                 if i in buy_signals and units == 0:
-#                     position_risk = equity * risk_percent
-#                     stop_loss = row['Adj Close'] * (1 - stop_loss_percent)
-#                     risk_per_unit = row['Adj Close'] - stop_loss
-#                     units_to_buy = int(position_risk // risk_per_unit) if risk_per_unit > 0 else 0
-
-#                     if units_to_buy > 0 and cash >= units_to_buy * row['Adj Close']:
-#                         units += units_to_buy
-#                         cash -= units_to_buy * row['Adj Close']
-#                         cash -= units_to_buy * row['Adj Close'] * 0.0002
-#                         total_trades += 1
-#                         purchase_price = row['Adj Close']
-
-#                 elif i in sell_signals and units > 0:
-#                     proceeds = units * row['Adj Close']
-#                     cash += proceeds - proceeds * 0.0002
-#                     units = 0
-#                     total_trades += 1
-
-#                 elif units > 0:
-#                     if row['Adj Close'] >= purchase_price * (1 + take_profit_percent):
-#                         proceeds = units * row['Adj Close']
-#                         cash += proceeds - proceeds * 0.0002
-#                         units = 0
-#                         total_trades += 1
-
-#                     elif row['Adj Close'] <= purchase_price * (1 - stop_loss_percent):
-#                         proceeds = units * row['Adj Close']
-#                         cash += proceeds - proceeds * 0.0002
-#                         units = 0
-#                         total_trades += 1
-
-#             if units > 0:
-#                 time_in_market_hours += 1
-
-#             equity = cash + units * row['Adj Close']
-#             equity_curve.append(equity)
-#         except Exception as e:
-#             logging.error(f"Error during backtesting at index {i}: {e}", exc_info=True)
-#             return None, df
-
-#     final_equity = equity_curve[-1]
-#     total_return = (final_equity - initial_cash) / initial_cash * 100
-#     equity_series = pd.Series(equity_curve)
-#     returns = equity_series.pct_change()
-#     if returns.std() != 0:
-#         sharpe_ratio = (
-#             np.sqrt(252 * 24) * returns.mean() / returns.std()
-#         )
-#     else:
-#         sharpe_ratio = 0
-
-#     metrics = {
-#         'Final Equity': final_equity,
-#         'Total Return (%)': total_return,
-#         'Sharpe Ratio': sharpe_ratio,
-#         'Total Trades': total_trades,
-#         'Time in Market (%)': (time_in_market_hours / len(df)) * 100
-#     }
-
-#     df = df.copy()
-#     df['Equity'] = equity_curve  # Add equity curve to DataFrame
-
-#     return metrics, df
 
 def backtest_strategy(
     df,
@@ -306,7 +204,6 @@ def backtest_strategy(
     df['Equity'] = equity_curve  # Add equity curve to DataFrame
 
     return metrics, df
-
 
 
 def optimize_and_test(file_path):
@@ -538,7 +435,6 @@ def main():
                 f.write(f"{key}: {value}\n")
 
     logging.info("Optimization and testing complete.")
-
 
 
 if __name__ == '__main__':

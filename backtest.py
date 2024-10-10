@@ -327,6 +327,7 @@ def process_pair(file):
         print(f"An error occurred while processing {pair_name}: {e}")
         return None
 
+
 def main_backtest():
     """
     Main function to run backtest on all currency pairs.
@@ -374,6 +375,7 @@ def main_backtest():
     # Display the performance metrics
     print("\nConsolidated Performance Metrics (Sorted by Final Equity):")
     print(performance_df)
+
 
 if __name__ == "__main__":
     main_backtest()
