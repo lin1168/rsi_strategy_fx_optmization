@@ -344,7 +344,7 @@ def main():
     metrics_df.sort_values(by='Final Equity', ascending=False, inplace=True)
 
     # Save the DataFrame to a CSV file in the results directory
-    metrics_csv_path = os.path.join(results_dir, 'performance_metrics.csv')
+    metrics_csv_path = os.path.join(results_dir, 'optimized_performance_metrics.csv')
     metrics_df.to_csv(metrics_csv_path, index=False)
 
     # Logging the CSV save action

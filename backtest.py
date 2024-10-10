@@ -367,7 +367,7 @@ def main_backtest():
     performance_df = performance_df.sort_values(by='Final Equity', ascending=False).reset_index(drop=True)
 
     # Save performance metrics to CSV
-    metrics_file = os.path.join(results_dir, 'performance_metrics_sorted_by_final_equity.csv')
+    metrics_file = os.path.join(results_dir, 'preset_performance_metrics_sorted_by_final_equity.csv')
     performance_df.to_csv(metrics_file, index=False)
 
     print(f"\nAll performance metrics saved to {metrics_file}")
