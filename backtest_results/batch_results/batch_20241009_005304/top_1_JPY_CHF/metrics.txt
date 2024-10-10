@@ -1,0 +1,8 @@
+Currency Pair: JPY/CHF
+Best Parameters: {'rsi_length': 2, 'oversold': 30, 'overbought': 70, 'risk_percent': 0.02, 'stop_loss_percent': 0.02, 'take_profit_percent': 0.05}
+Testing Metrics:
+Final Equity: 103517.34789402802
+Total Return (%): 3.5173478940280183
+Sharpe Ratio: 5.999551944129851
+Total Trades: 64
+Time in Market (%): 43.674698795180724

@@ -209,8 +209,6 @@ def backtest_strategy(df, initial_cash=100_000,
         sharpe_ratio = np.sqrt(252 * 24) * hourly_returns.mean() / hourly_returns.std()
     else:
         sharpe_ratio = 0
-    initial_price = df['Adj Close'].iloc[0]
-    df['Buy_and_Hold'] = initial_cash * (df['Adj Close'] / initial_price)
 
     metrics = {
         'Final Equity': final_equity,
@@ -263,12 +261,11 @@ def plot_results(df, metrics, pair_name):
     axs[1].legend()
     axs[1].grid(True)
 
-    # 3. Equity curve comparison: Strategy vs Buy-and-Hold
+    # 3. Equity curve comparison: Strategy 
     axs[2].plot(df['Date'], df['Equity'], label='RSI Strategy Equity', color='blue')
-    axs[2].plot(df['Date'], df['Buy_and_Hold'], label='Buy-and-Hold Equity', color='orange')
     axs[2].yaxis.set_major_formatter(ticker.FuncFormatter(lambda x, _: f'${x:,.0f}'))
     axs[2].set_ylabel('Equity (in dollars)')
-    axs[2].set_title(f'Equity Curve Comparison: RSI Strategy vs Buy-and-Hold for {pair_name}')
+    axs[2].set_title(f'Equity Curve for RSI Strategy for {pair_name}')
     axs[2].legend()
     axs[2].grid(True)
 

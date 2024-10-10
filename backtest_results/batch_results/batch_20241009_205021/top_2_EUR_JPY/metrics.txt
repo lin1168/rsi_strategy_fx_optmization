@@ -1,0 +1,14 @@
+Currency Pair: EUR/JPY
+Best Parameters: {'rsi_length': 5, 'oversold': 30, 'overbought': 80, 'risk_percent': 0.01, 'stop_loss_percent': 0.01, 'take_profit_percent': 0.05}
+Testing Metrics:
+Final Equity: 103009.45414919994
+Total Return (%): 3.0094541491999407
+Equity Peak: 103742.17514919993
+Volatility (%): 8.63882899801474
+Sharpe Ratio: 6.314677377201858
+Sortino Ratio: 0.0010901943547356185
+Max Drawdown (%): -1.3487403082000138
+Average Drawdown (%): -0.4503393373424847
+Total Trades: 17
+Win Rate (%): 41.17647058823529
+Time in Market (%): 58.43373493975904

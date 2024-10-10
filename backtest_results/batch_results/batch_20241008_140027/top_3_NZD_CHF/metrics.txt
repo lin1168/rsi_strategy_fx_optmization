@@ -1,0 +1,8 @@
+Currency Pair: NZD/CHF
+Best Parameters: {'rsi_length': 10, 'oversold': 30, 'overbought': 90, 'risk_percent': 0.01, 'stop_loss_percent': 0.01, 'take_profit_percent': 0.05}
+Testing Metrics:
+Final Equity: 102575.29100748002
+Total Return (%): 2.5752910074800166
+Sharpe Ratio: 5.9256688648075055
+Total Trades: 1
+Time in Market (%): 92.16867469879519

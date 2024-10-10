@@ -1,0 +1,8 @@
+Currency Pair: EUR/JPY
+Best Parameters: {'rsi_length': 5, 'oversold': 30, 'overbought': 80, 'risk_percent': 0.01, 'stop_loss_percent': 0.01, 'take_profit_percent': 0.05}
+Testing Metrics:
+Final Equity: 103009.45414919994
+Total Return (%): 3.0094541491999407
+Sharpe Ratio: 6.314677377201858
+Total Trades: 17
+Time in Market (%): 58.43373493975904

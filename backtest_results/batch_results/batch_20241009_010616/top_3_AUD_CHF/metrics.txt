@@ -1,0 +1,8 @@
+Currency Pair: AUD/CHF
+Best Parameters: {'rsi_length': 10, 'oversold': 30, 'overbought': 80, 'risk_percent': 0.01, 'stop_loss_percent': 0.01, 'take_profit_percent': 0.05}
+Testing Metrics:
+Final Equity: 102673.76685888
+Total Return (%): 2.673766858880001
+Sharpe Ratio: 9.446344478509575
+Total Trades: 4
+Time in Market (%): 37.95180722891566
